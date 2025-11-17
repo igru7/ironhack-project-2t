@@ -26,5 +26,5 @@ jobs:
         run: eksctl utils write-kubeconfig --cluster ironhack-main-2 --region us-west-1
 
       - name: Apply Kubernetes Manifests
-        run: kubectl apply -f k8s/
+        run: kubectl apply -f k8s/ -n irene-p2t
  
