@@ -25,6 +25,9 @@ jobs:
       - name: Update Kubeconfig
         run: eksctl utils write-kubeconfig --cluster ironhack-main-2 --region us-west-1
 
+      - name: Apply Kubernetes Manifest namespace
+        run: kubectl apply -f k8s/namespace.yaml
+
       - name: Apply Kubernetes Manifests
         run: kubectl apply -f k8s/ -n irene-p2t
  
