@@ -8,7 +8,7 @@ spec:
   ingressClassName: "nginx"
   rules:
     # Route for vote-site
-    - host: vote.irene-p2t.diogohack.shop
+    - host: vote.irene-p2c.diogohack.shop
       http:
         paths:
           - path: /
@@ -20,7 +20,7 @@ spec:
                   number: 80
 
     # Route for result-site
-    - host: result.irene-p2t.diogohack.shop
+    - host: result.irene-p2c.diogohack.shop
       http:
         paths:
           - path: /
