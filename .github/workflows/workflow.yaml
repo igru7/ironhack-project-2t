@@ -29,7 +29,7 @@ jobs:
         run: kubectl apply -f k8s-namespace-c/namespace.yaml
 
       - name: Set default namespace
-        run: kubectl config set-context --current --namespace=irene-p2t
+        run: kubectl config set-context --current --namespace=irene-p2t-c
 
       - name: Check current namespace
         run: kubectl config view --minify | grep 'namespace:'
