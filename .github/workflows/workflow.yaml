@@ -28,6 +28,9 @@ jobs:
       - name: Apply Kubernetes Manifest namespace
         run: kubectl apply -f k8s-namespace/namespace.yaml
 
+      - name: Apply Kubernetes Manifests secret
+        run: kubectl apply -f k8s-secret/postgres-secret_deployment.yaml -n irene-p2t
+
       - name: Apply Kubernetes Manifests 
         run: kubectl apply -f k8s/ -n irene-p2t
 

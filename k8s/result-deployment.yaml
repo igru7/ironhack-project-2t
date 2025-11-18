@@ -22,10 +22,18 @@ spec:
             value: postgres-service
           - name: PG_PORT
             value: "5432"
+            
           - name: PG_USER
-            value: "postgres"
-          - name: PG_Password
-            value: "postgres"
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: username
+
+          - name: PG_PASSWORD
+            valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: password
 ---
 apiVersion: v1
 kind: Service
