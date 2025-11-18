@@ -31,6 +31,11 @@ jobs:
       - name: Apply Kubernetes Manifests 
         run: kubectl apply -f k8s/ -n irene-p2t
 
-      
+      - name: Wait for Pods to be Ready
+        run: |
+          kubectl wait --for=condition=Running pod -l app=redis-app --timeout=120s
+          kubectl wait --for=condition=Ready pod -l app=worker-app --timeout=120s
+          kubectl wait --for=condition=Ready pod -l app=postgres-app --timeout=120s
+          kubectl wait --for=condition=Ready pod -l app=result-app --timeout=120s
         
  
