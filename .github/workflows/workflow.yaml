@@ -36,14 +36,14 @@ jobs:
 
       - name: Apply Kubernetes Manifests extras
         run: | 
-          kubectl apply -f k8s-extras-c/storage-class-ebs-deployment.yaml -n irene-p2t-c
+          kubectl apply -f k8s-extras/storage-class-ebs-deployment.yaml -n irene-p2t-c
 
       - name: Apply Kubernetes Manifests extras 2
         run: | 
 
-          kubectl apply -f k8s-extras-c/ingress_deployment.yaml -n irene-p2t
-          kubectl apply -f k8s-extras-c/postgres-pvc-deployment.yaml -n irene-p2t
-          kubectl apply -f k8s-extras-c/postgres-secret_deployment.yaml -n irene-p2t
+          kubectl apply -f k8s-extras/ingress_deployment.yaml -n irene-p2t
+          kubectl apply -f k8s-extras/postgres-pvc-deployment.yaml -n irene-p2t
+          kubectl apply -f k8s-extras/postgres-secret_deployment.yaml -n irene-p2t
           # kubectl apply -f k8s-extras-c/postgres-deployment.yaml -n irene-p2t
           
 
