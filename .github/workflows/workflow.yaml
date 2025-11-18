@@ -31,11 +31,13 @@ jobs:
       - name: Set default namespace
         run: kubectl config set-context --current --namespace=irene-p2t
 
-      - name: Apply Kubernetes Manifests secret
-        run: kubectl apply -f k8s-extras/postgres-secret_deployment.yaml -n irene-p2t
-
       - name: Check current namespace
         run: kubectl config view --minify | grep 'namespace:'
+
+      - name: Apply Kubernetes Manifests extras
+        run: | 
+          kubectl apply -f k8s-extras/ingress_deployment.yaml -n irene-p2t
+          kubectl apply -f k8s-extras/postgres-secret_deployment.yaml -n irene-p2t
 
       - name: Apply Kubernetes Manifests 
         run: kubectl apply -f k8s/ -n irene-p2t
