@@ -29,7 +29,7 @@ jobs:
         run: kubectl apply -f k8s-namespace-c/namespace.yaml
 
       - name: Set default namespace
-        run: kubectl config set-context --current --namespace=irene-p2t-c
+        run: kubectl config set-context --current --namespace=irene-p2t
 
       - name: Check current namespace
         run: kubectl config view --minify | grep 'namespace:'
@@ -41,24 +41,24 @@ jobs:
       - name: Apply Kubernetes Manifests extras 2
         run: | 
 
-          kubectl apply -f k8s-extras-c/ingress_deployment.yaml -n irene-p2t-c
-          kubectl apply -f k8s-extras-c/postgres-pvc-deployment.yaml -n irene-p2t-c
-          kubectl apply -f k8s-extras-c/postgres-secret_deployment.yaml -n irene-p2t-c
-          kubectl apply -f k8s-extras-c/postgres-deployment.yaml -n irene-p2t-c
+          kubectl apply -f k8s-extras-c/ingress_deployment.yaml -n irene-p2t
+          kubectl apply -f k8s-extras-c/postgres-pvc-deployment.yaml -n irene-p2t
+          kubectl apply -f k8s-extras-c/postgres-secret_deployment.yaml -n irene-p2t
+          # kubectl apply -f k8s-extras-c/postgres-deployment.yaml -n irene-p2t
           
 
 
          
 
       - name: Apply Kubernetes Manifests 
-        run: kubectl apply -f k8s/ -n irene-p2t-c
+        run: kubectl apply -f k8s/ -n irene-p2t
 
-      #- name: Wait for Pods to be Ready
-      #  run: |
-      #    kubectl wait --for=condition=Ready pod -l app=voting-app -n irene-p2t --timeout=120s
-      #    kubectl wait --for=condition=Ready pod -l app=redis -n irene-p2t  --timeout=120s
-      #    kubectl wait --for=condition=Ready pod -l app=worker-app -n irene-p2t  --timeout=120s
-      #    kubectl wait --for=condition=Ready pod -l app=postgres -n irene-p2t  --timeout=120s
-      #    kubectl wait --for=condition=Ready pod -l app=result-app -n irene-p2t  --timeout=120s
+      - name: Wait for Pods to be Ready
+        run: |
+          kubectl wait --for=condition=Ready pod -l app=voting-app -n irene-p2t --timeout=120s
+          kubectl wait --for=condition=Ready pod -l app=redis -n irene-p2t  --timeout=120s
+          kubectl wait --for=condition=Ready pod -l app=worker-app -n irene-p2t  --timeout=120s
+          kubectl wait --for=condition=Ready pod -l app=postgres -n irene-p2t  --timeout=120s
+          kubectl wait --for=condition=Ready pod -l app=result-app -n irene-p2t  --timeout=120s
         
  

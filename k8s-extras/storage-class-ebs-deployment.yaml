@@ -1,0 +1,15 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-gp3-sc
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"  # optional, legt diese SC als Standard fest
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+parameters:
+  type: gp3
+  encrypted: "true"          # optional, legt Verschlüsselung fest
+  # Wenn nötig, kannst du auch IOPS / Durchsatz konfigurieren:
+  # iopsPerGB: "10"
+  # throughput: "125"
