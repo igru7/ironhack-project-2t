@@ -42,12 +42,12 @@ jobs:
         run: | 
           kubectl apply -f k8s-extras-c/postgres-deployment.yaml -n irene-p2t-c
 
-      #    kubectl apply -f k8s-extras/ingress_deployment.yaml -n irene-p2t
-      #    kubectl apply -f k8s-extras/postgres-secret_deployment.yaml -n irene-p2t
+          kubectl apply -f k8s-extras/ingress_deployment.yaml -n irene-p2t-c
+          kubectl apply -f k8s-extras/postgres-secret_deployment.yaml -n irene-p2t-c
          
 
-      #- name: Apply Kubernetes Manifests 
-      #  run: kubectl apply -f k8s/ -n irene-p2t
+      - name: Apply Kubernetes Manifests 
+        run: kubectl apply -f k8s/ -n irene-p2t-c
 
       #- name: Wait for Pods to be Ready
       #  run: |
